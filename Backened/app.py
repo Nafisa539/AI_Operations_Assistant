@@ -28,9 +28,9 @@ while True:
             reader = csv.DictReader(file)
             for row in reader:
                 if question.lower() == row["Event"].lower():
-                    print("Event:", row["Event"])
+                    print("\nEvent:", row["Event"])
                     print("Subject:", row["Subject"])
-                    print("\nSemester:", row["Semester"])
+                    print("Semester:", row["Semester"])
                     print("Tentative_Date:", row["Tentative_Date"])
                     print("Time:", row["Time"])
                     found = True
