@@ -1,55 +1,24 @@
-import csv
-
-print("      AI Operations Assistant      ")
-print("--------------------------------------")
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from chatbot import get_response
  
-while True:
+app = Flask(__name__)
+CORS(app)
  
-    question = input("\nEnter your question or Student ID (type 'exit' to quit): ")
+@app.route("/")
+def home():
+    return "AI Powered Operations Assistant is Running"
  
-    if question.lower() == "exit":
-        print("Thank you for using AI Operations Assistant.")
-        break
+@app.route("/chat", methods=["POST"])
+def chat():
  
-    found = False
+    data = request.get_json()
  
-    # Search FAQ.csv
-    with open("../data/faq.csv","r",encoding="utf-8") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            if question.lower() == row["Question"].lower():
-                print("\nAnswer:", row["Answer"])
-                found = True
-                break
+    question = data["message"]
  
-    # Search schedule.csv
-    if not found:
-        with open("../data/schedule.csv","r",encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                if question.lower() == row["Event"].lower():
-                    print("\nEvent:", row["Event"])
-                    print("Subject:", row["Subject"])
-                    print("Semester:", row["Semester"])
-                    print("Date:", row["Date"])
-                    print("Time:", row["Time"])
-                    found = True
-                    break
+    answer = get_response(question)
  
-    # Search student_activity.csv
-    if not found:
-        with open("../data/student_activity.csv","r",encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                if question.lower() == row["Student_ID"].lower():
-                    print("\nStudent Details")
-                    print("Student ID:", row["Student_ID"])
-                    print("Student Name:", row["Student_Name"])
-                    print("Attendance:", row["Attendance"])
-                    print("Assignment Status:", row["Assignment_Status"])
-                    print("Marks:", row["Marks"])
-                    found = True
-                    break
+    return jsonify({"response": answer})
  
-    if not found:
-        print("Sorry! No matching record found.")
+if __name__ == "__main__":
+    app.run(debug=True)
