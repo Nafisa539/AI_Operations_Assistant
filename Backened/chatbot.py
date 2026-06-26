@@ -1,45 +1,51 @@
-import pandas as pd
- 
-# Read CSV files
-faq = pd.read_csv("../data/faq.csv")
-schedule = pd.read_csv("../data/schedule.csv")
-student = pd.read_csv("../data/student_activity.csv")
- 
+import csv
  
 def get_response(question):
  
     question = question.lower()
  
-    # ---------------- FAQ ----------------
-    for index, row in faq.iterrows():
+    # ---------- FAQ ----------
+    with open("../data/faq.csv", mode="r", encoding="utf-8") as file:
  
-        if row["Question"].lower() in question:
-            return row["Answer"]
+        reader = csv.DictReader(file)
  
-    # ---------------- Schedule ----------------
-    for index, row in schedule.iterrows():
+        for row in reader:
  
-        if row["Subject"].lower() in question:
+            if row["Question"].lower() in question:
+                return row["Answer"]
  
-            return (
-                f"Subject: {row['Subject']}\n"
-                f"Event: {row['Event']}\n"
-                f"Semester: {row['Semester']}\n"
-                f"Date: {row['Date']}\n"
-                f"Time: {row['Time']}"
-            )
+    # ---------- Schedule ----------
+    with open("../data/schedule.csv", mode="r", encoding="utf-8") as file:
  
-    # ---------------- Student Activity ----------------
-    for index, row in student.iterrows():
+        reader = csv.DictReader(file)
  
-        if row["Student_Name"].lower() in question:
+        for row in reader:
  
-            return (
-                f"Student Name: {row['Student_Name']}\n"
-                f"Student ID: {row['Student_ID']}\n"
-                f"Attendance: {row['Attendance']}%\n"
-                f"Assignment Status: {row['Assignment_Status']}\n"
-                f"Marks: {row['Marks']}"
-            )
+            if row["Subject"].lower() in question:
  
-    return "Sorry! I couldn't find the requested information."
+                return (
+                    f"Subject : {row['Subject']}\n"
+                    f"Event : {row['Event']}\n"
+                    f"Semester : {row['Semester']}\n"
+                    f"Date : {row['Date']}\n"
+                    f"Time : {row['Time']}"
+                )
+ 
+    # ---------- Student Activity ----------
+    with open("../data/student_activity.csv", mode="r", encoding="utf-8") as file:
+ 
+        reader = csv.DictReader(file)
+ 
+        for row in reader:
+ 
+            if row["Student_Name"].lower() in question:
+ 
+                return (
+                    f"Student Name : {row['Student_Name']}\n"
+                    f"Student ID : {row['Student_ID']}\n"
+                    f"Attendance : {row['Attendance']}\n"
+                    f"Assignment Status : {row['Assignment_Status']}\n"
+                    f"Marks : {row['Marks']}"
+                )
+ 
+    return "Sorry! Information not found."
