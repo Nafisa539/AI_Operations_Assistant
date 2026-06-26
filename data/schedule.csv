@@ -1,51 +1,69 @@
-Event,Date,Time,Description
-Orientation Program,2026-07-01,09:00 AM,Introduction to the online program
-Python Class,2026-07-02,10:00 AM,Python basics lecture
-Database Class,2026-07-03,11:00 AM,Introduction to SQL
-Assignment 1 Released,2026-07-04,09:00 AM,Assignment uploaded to LMS
-Assignment 1 Deadline,2026-07-05,11:59 PM,Submit Assignment 1
-AI Workshop,2026-07-06,02:00 PM,Hands-on AI workshop
-Doubt Clearing Session,2026-07-07,04:00 PM,Faculty Q&A session
-Quiz 1,2026-07-08,10:00 AM,Online quiz
-Soft Skills Session,2026-07-09,03:00 PM,Communication skills
-Holiday,2026-07-10,All Day,No classes
-Python Lab,2026-07-11,09:00 AM,Python practical
-Assignment 2 Released,2026-07-12,09:00 AM,Assignment uploaded
-Guest Lecture,2026-07-13,11:00 AM,Industry expert session
-Project Discussion,2026-07-14,02:00 PM,Project planning
-Mid-Term Exam,2026-07-15,10:00 AM,Mid-semester exam
-Exam Result,2026-07-16,05:00 PM,Mid-term results
-Cloud Computing Class,2026-07-17,10:00 AM,Cloud fundamentals
-Assignment 2 Deadline,2026-07-18,11:59 PM,Submit Assignment 2
-Resume Workshop,2026-07-19,03:00 PM,Career guidance
-Mock Interview,2026-07-20,11:00 AM,Interview practice
-Data Analytics Class,2026-07-21,09:00 AM,Analytics basics
-Quiz 2,2026-07-22,10:00 AM,Online quiz
-Project Review 1,2026-07-23,02:00 PM,Faculty review
-Cyber Security Class,2026-07-24,11:00 AM,Security basics
-Assignment 3 Released,2026-07-25,09:00 AM,Assignment uploaded
-Placement Training,2026-07-26,03:00 PM,Aptitude session
-Project Submission,2026-07-27,11:59 PM,Submit project
-Final Exam Revision,2026-07-28,10:00 AM,Revision session
-Final Exam,2026-07-29,10:00 AM,End-semester exam
-Final Result,2026-07-30,05:00 PM,Results announced
-Certificate Distribution,2026-07-31,04:00 PM,Course completion
-Java Class,2026-08-01,09:00 AM,Java programming
-HTML Workshop,2026-08-02,10:00 AM,HTML basics
-CSS Workshop,2026-08-03,10:00 AM,CSS basics
-JavaScript Class,2026-08-04,11:00 AM,JavaScript basics
-React Introduction,2026-08-05,02:00 PM,React overview
-GitHub Training,2026-08-06,03:00 PM,GitHub basics
-API Development,2026-08-07,11:00 AM,REST API concepts
-Backend Development,2026-08-08,09:00 AM,Flask introduction
-Frontend Development,2026-08-09,10:00 AM,UI development
-Project Review 2,2026-08-10,02:00 PM,Second review
-Assignment 4 Released,2026-08-11,09:00 AM,Assignment uploaded
-Assignment 4 Deadline,2026-08-12,11:59 PM,Submit Assignment 4
-Mock Presentation,2026-08-13,03:00 PM,Presentation practice
-Final Project Demo,2026-08-14,10:00 AM,Project demonstration
-Feedback Session,2026-08-15,11:00 AM,Faculty feedback
-Career Guidance,2026-08-16,02:00 PM,Career opportunities
-Internship Session,2026-08-17,03:00 PM,Internship guidance
-Alumni Talk,2026-08-18,11:00 AM,Interaction with alumni
-Program Closing Ceremony,2026-08-19,04:00 PM,Closing ceremony
+Semester,Subject,Event,Tentative_Date,Time
+Semester 1,Electrical Science,Assignment,01-07-2026,10:00 AM
+Semester 1,Electrical Science,Lab,02-07-2026,10:00 AM
+Semester 1,Electrical Science,Mid Semester Exam,03-07-2026,10:00 AM
+Semester 1,Electrical Science,Semester Exam,04-07-2026,10:00 AM
+Semester 1,Probability & Statistics,Assignment,05-07-2026,10:00 AM
+Semester 1,Probability & Statistics,Lab,06-07-2026,10:00 AM
+Semester 1,Probability & Statistics,Mid Semester Exam,07-07-2026,10:00 AM
+Semester 1,Probability & Statistics,Semester Exam,08-07-2026,10:00 AM
+Semester 1,Symbolic Logic,Assignment,09-07-2026,10:00 AM
+Semester 1,Symbolic Logic,Lab,10-07-2026,10:00 AM
+Semester 1,Symbolic Logic,Mid Semester Exam,11-07-2026,10:00 AM
+Semester 1,Symbolic Logic,Semester Exam,12-07-2026,10:00 AM
+Semester 1,Writing Practice,Assignment,13-07-2026,10:00 AM
+Semester 1,Writing Practice,Lab,14-07-2026,10:00 AM
+Semester 1,Writing Practice,Mid Semester Exam,15-07-2026,10:00 AM
+Semester 1,Writing Practice,Semester Exam,16-07-2026,10:00 AM 
+Semester 2,Creative Thinking,Assignment,17-07-2026,10:00 AM
+Semester 2,Creative Thinking,Lab,18-07-2026,10:00 AM
+Semester 2,Creative Thinking,Mid Semester Exam,19-07-2026,10:00 AM
+Semester 2,Creative Thinking,Semester Exam,20-07-2026,10:00 AM
+Semester 2,Digital Design,Assignment,21-07-2026,10:00 AM
+Semester 2,Digital Design,Lab,22-07-2026,10:00 AM
+Semester 2,Digital Design,Mid Semester Exam,23-07-2026,10:00 AM
+Semester 2,Digital Design,Semester Exam,24-07-2026,10:00 AM
+Semester 2,Linear Algebra and Optimization,Assignment,25-07-2026,10:00 AM
+Semester 2,Linear Algebra and Optimization,Lab,26-07-2026,10:00 AM
+Semester 2,Linear Algebra and Optimization,Mid Semester Exam,27-07-2026,10:00 AM
+Semester 2,Linear Algebra and Optimization,Semester Exam,28-07-2026,10:00 AM
+Semester 2,Data Structures,Assignment,01-08-2026,10:00 AM
+Semester 2,Data Structures,Lab,02-08-2026,10:00 AM
+Semester 2,Data Structures,Mid Semester Exam,03-08-2026,10:00 AM
+Semester 2,Data Structures,Semester Exam,04-08-2026,10:00 AM
+Semester 3,Discrete Structures for Computer Science,Assignment,05-08-2026,10:00 AM
+Semester 3,Discrete Structures for Computer Science,Lab,06-08-2026,10:00 AM
+Semester 3,Discrete Structures for Computer Science,Mid Semester Exam,07-08-2026,10:00 AM
+Semester 3,Discrete Structures for Computer Science,Semester Exam,08-08-2026,10:00 AM
+Semester 3,Computer Programming,Assignment,09-08-2026,10:00 AM
+Semester 3,Computer Programming,Lab,10-08-2026,10:00 AM
+Semester 3,Computer Programming,Mid Semester Exam,11-08-2026,10:00 AM
+Semester 3,Computer Programming,Semester Exam,12-08-2026,10:00 AM
+Semester 3,Dynamics of Social Change,Assignment,13-08-2026,10:00 AM
+Semester 3,Dynamics of Social Change,Lab,14-08-2026,10:00 AM
+Semester 3,Dynamics of Social Change,Mid Semester Exam,15-08-2026,10:00 AM
+Semester 3,Dynamics of Social Change,Semester Exam,16-08-2026,10:00 AM
+Semester 3,Environmental Studies,Assignment,17-08-2026,10:00 AM
+Semester 3,Environmental Studies,Lab,18-08-2026,10:00 AM
+Semester 3,Environmental Studies,Mid Semester Exam,19-08-2026,10:00 AM
+Semester 3,Environmental Studies,Semester Exam,20-08-2026,10:00 AM
+Semester 4,Computer Organization and Architecture,Assignment,21-08-2026,10:00 AM
+Semester 4,Computer Organization and Architecture,Lab,22-08-2026,10:00 AM
+Semester 4,Computer Organization and Architecture,Mid Semester Exam,23-08-2026,10:00 AM
+Semester 4,Computer Organization and Architecture,Semester Exam,24-08-2026,10:00 AM
+Semester 4,Cultural Studies,Assignment,25-08-2026,10:00 AM
+Semester 4,Cultural Studies,Lab,26-08-2026,10:00 AM
+Semester 4,Cultural Studies,Mid Semester Exam,27-08-2026,10:00 AM
+Semester 4,Cultural Studies,Semester Exam,28-08-2026,10:00 AM
+Semester 4,Evolution of Design,Assignment,01-09-2026,10:00 AM
+Semester 4,Evolution of Design,Lab,02-09-2026,10:00 AM
+Semester 4,Evolution of Design,Mid Semester Exam,03-09-2026,10:00 AM
+Semester 4,Evolution of Design,Semester Exam,04-09-2026,10:00 AM
+Semester 4,Object Oriented Programming and Design,Assignment,05-09-2026,10:00 AM
+Semester 4,Object Oriented Programming and Design,Lab,06-09-2026,10:00 AM
+Semester 4,Object Oriented Programming and Design,Mid Semester Exam,07-09-2026,10:00 AM
+Semester 4,Object Oriented Programming and Design,Semester Exam,08-09-2026,10:00 AM
+Semester 4,Design Project,Assignment,09-09-2026,10:00 AM
+Semester 4,Design Project,Lab,10-09-2026,10:00 AM
+Semester 4,Design Project,Mid Semester Exam,11-09-2026,10:00 AM
+Semester 4,Design Project,Semester Exam,12-09-2026,10:00 AM
