@@ -31,7 +31,7 @@ while True:
                     print("\nEvent:", row["Event"])
                     print("Subject:", row["Subject"])
                     print("Semester:", row["Semester"])
-                    print("Tentative_Date:", row["Tentative_Date"])
+                    print("Date:", row["Date"])
                     print("Time:", row["Time"])
                     found = True
                     break
