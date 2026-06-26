@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from chatbot import get_response
  
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
  
 @app.route("/")
@@ -20,5 +20,5 @@ def chat():
  
     return jsonify({"response": answer})
  
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)
