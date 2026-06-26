@@ -27,10 +27,10 @@ while True:
         with open("../data/schedule.csv","r",encoding="utf-8") as file:
             reader = csv.DictReader(file)
             for row in reader:
-                if question.lower() == row[""].lower():
-                    print("\nSemester:", row["Semester"])
-                    print("Subject:", row["Subject"])
+                if question.lower() == row["Event"].lower():
                     print("Event:", row["Event"])
+                    print("Subject:", row["Subject"])
+                    print("\nSemester:", row["Semester"])
                     print("Tentative_Date:", row["Tentative_Date"])
                     print("Time:", row["Time"])
                     found = True
