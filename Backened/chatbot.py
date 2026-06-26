@@ -4,7 +4,7 @@ def get_response(question):
  
     question = question.lower()
  
-    # ---------- FAQ ----------
+    #  FAQ 
     with open("../data/faq.csv", mode="r", encoding="utf-8") as file:
  
         reader = csv.DictReader(file)
@@ -14,7 +14,7 @@ def get_response(question):
             if row["Question"].lower() in question:
                 return row["Answer"]
  
-    # ---------- Schedule ----------
+    #  Schedule 
     with open("../data/schedule.csv", mode="r", encoding="utf-8") as file:
  
         reader = csv.DictReader(file)
@@ -31,7 +31,7 @@ def get_response(question):
                     f"Time : {row['Time']}"
                 )
  
-    # ---------- Student Activity ----------
+    # Student Activity 
     with open("../data/student_activity.csv", mode="r", encoding="utf-8") as file:
  
         reader = csv.DictReader(file)
