@@ -27,7 +27,7 @@ while True:
         with open("../data/schedule.csv","r",encoding="utf-8") as file:
             reader = csv.DictReader(file)
             for row in reader:
-                if question.lower() == row["Semester"].lower():
+                if question.lower() == row[""].lower():
                     print("\nSemester:", row["Semester"])
                     print("Subject:", row["Subject"])
                     print("Event:", row["Event"])
