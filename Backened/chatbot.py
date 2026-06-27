@@ -1,7 +1,7 @@
 import csv
- 
+
 def get_faq_response(question):
- 
+
     question = question.lower()
  
     with open("../data/faq.csv", "r", encoding="utf-8") as file:
