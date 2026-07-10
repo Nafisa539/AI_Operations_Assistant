@@ -1,26 +1,25 @@
-import csv
+import pandas as pd
  
-def get_student_data(question):
+# Read Student Activity CSV
+students = pd.read_csv("../data/student_activity.csv")
+ 
+def data_query(question):
  
     question = question.lower()
  
-    with open("../data/student_activity.csv", "r", encoding="utf-8") as file:
+    for i in range(len(students)):
  
-        reader = csv.DictReader(file)
+        student_name = str(students["Student_Name"][i]).lower()
+        student_id = str(students["Student_ID"][i]).lower()
  
-        for row in reader:
+        if student_name in question or student_id in question:
  
-            name = row["Student_Name"].lower()
-            student_id = row["Student_ID"].lower()
- 
-            if name in question or student_id in question:
- 
-                return (
-                    f"Student ID : {row['Student_ID']}\n"
-                    f"Student Name : {row['Student_Name']}\n"
-                    f"Attendance : {row['Attendance']}%\n"
-                    f"Assignment Status : {row['Assignment_Status']}\n"
-                    f"Marks : {row['Marks']}"
-                )
+            return (
+                "Student ID : " + str(students["Student_ID"][i]) +
+                "\nStudent Name : " + str(students["Student_Name"][i]) +
+                "\nAttendance : " + str(students["Attendance"][i]) +
+                "\nAssignment Status : " + str(students["Assignment_Status"][i]) +
+                "\nMarks : " + str(students["Marks"][i])
+            )
  
     return None

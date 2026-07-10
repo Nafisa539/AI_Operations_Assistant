@@ -1,9 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
- 
-from chatbot import get_faq_response
-from schedule_lookup import get_schedule
-from data_query import get_student_data
+from chatbot import get_response
  
 app = Flask(__name__)
 CORS(app)
@@ -21,20 +18,7 @@ def chat():
  
     question = data["message"]
  
-    # FAQ
-    answer = get_faq_response(question)
- 
-    # Schedule
-    if answer is None:
-        answer = get_schedule(question)
- 
-    # Student Data
-    if answer is None:
-        answer = get_student_data(question)
- 
-    # No Match
-    if answer is None:
-        answer = "Sorry, I couldn't find the requested information."
+    answer = get_response(question)
  
     return jsonify({"response": answer})
  

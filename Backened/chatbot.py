@@ -1,19 +1,63 @@
-import csv
-
-def get_faq_response(question):
-
+from faq_lookup import faq_lookup
+from schedule_lookup import schedule_lookup
+from data_query import data_query
+from email_generator import generate_email
+from rag import rag_search
+ 
+ 
+def get_response(question):
+ 
     question = question.lower()
  
-    with open("../data/faq.csv", "r", encoding="utf-8") as file:
+    # FAQ
+    answer = faq_lookup(question)
+    if answer:
+        return answer
  
-        reader = csv.DictReader(file)
+    # Schedule
+    answer = schedule_lookup(question)
+    if answer:
+        return answer
  
-        for row in reader:
+    # Student Activity
+    answer = data_query(question)
+    if answer:
+        return answer
  
-            csv_question = row["Question"].lower()
+    # Email Generator
+    if "leave email" in question:
+        return generate_email("leave")
  
-            if csv_question in question or question in csv_question:
+    elif "assignment email" in question:
+        return generate_email("assignment")
  
-                return row["Answer"]
+    elif "technical email" in question:
+        return generate_email("technical")
  
-    return None
+    elif "attendance email" in question:
+        return generate_email("attendance")
+ 
+    elif "bonafide email" in question:
+        return generate_email("bonafide")
+ 
+    elif "fee email" in question:
+        return generate_email("fee")
+ 
+    elif "library email" in question:
+        return generate_email("library")
+ 
+    elif "exam email" in question:
+        return generate_email("exam")
+ 
+    elif "id card email" in question:
+        return generate_email("id card")
+ 
+    elif "password email" in question:
+        return generate_email("password")
+ 
+    # RAG Search
+    answer = rag_search(question)
+    if answer:
+        return answer
+ 
+    return "Sorry! I couldn't find an answer."

@@ -1,3 +1,9 @@
-Flask
-Flask-Cors
+flask
+flask-cors
+pandas
 pypdf
+langchain
+langchain-community
+langchain-text-splitters
+chromadb
+sentence-transformers

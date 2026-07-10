@@ -1,23 +1,25 @@
-import csv
+import pandas as pd
  
-def get_schedule(question):
+# Read schedule.csv
+schedule = pd.read_csv("../data/schedule.csv")
+ 
+def schedule_lookup(question):
  
     question = question.lower()
  
-    with open("../data/schedule.csv", "r", encoding="utf-8") as file:
+    for i in range(len(schedule)):
  
-        reader = csv.DictReader(file)
+        event = str(schedule["Event"][i]).lower()
+        subject = str(schedule["Subject"][i]).lower()
  
-        for row in reader:
+        if event in question or subject in question:
  
-            if row["Subject"].lower() in question:
- 
-                return (
-                    f"Subject : {row['Subject']}\n"
-                    f"Event : {row['Event']}\n"
-                    f"Semester : {row['Semester']}\n"
-                    f"Date : {row['Date']}\n"
-                    f"Time : {row['Time']}"
-                )
+            return (
+                "Event : " + str(schedule["Event"][i]) +
+                "\nSubject : " + str(schedule["Subject"][i]) +
+                "\nSemester : " + str(schedule["Semester"][i]) +
+                "\nDate : " + str(schedule["Date"][i]) +
+                "\nTime : " + str(schedule["Time"][i])
+            )
  
     return None
