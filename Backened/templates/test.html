@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Powered Operations Assistant</title>
+</head>
+<body>
+ 
+    <h2>AI Powered Operations Assistant</h2>
+ 
+    <input type="text" id="question" placeholder="Ask your question">
+ 
+    <button onclick="sendQuestion()">Send</button>
+ 
+    <h3>Answer:</h3>
+ 
+    <p id="answer"></p>
+ 
+<script>
+ 
+async function sendQuestion(){
+ 
+    let question = document.getElementById("question").value;
+ 
+    let response = await fetch("/chat",{
+ 
+        method:"POST",
+ 
+        headers:{
+            "Content-Type":"application/json"
+        },
+ 
+        body:JSON.stringify({
+            message:question
+        })
+ 
+    });
+ 
+    let data = await response.json();
+ 
+    document.getElementById("answer").innerHTML=data.response;
+ 
+}
+ 
+</script>
+ 
+</body>
+</html>
