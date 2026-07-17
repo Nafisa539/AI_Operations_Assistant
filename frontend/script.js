@@ -13,7 +13,7 @@ async function sendQuestion() {
  
     document.getElementById("question").value = "";
  
-    let response = await fetch("https://urban-space-succotash-wvrw6pgjvvx6h57qv-5000.app.github.dev/chat", {
+    let response = await fetch("/chat", {
  
         method: "POST",
  
