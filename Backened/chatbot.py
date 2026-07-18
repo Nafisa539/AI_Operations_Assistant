@@ -5,59 +5,103 @@ from email_generator import generate_email
 from rag import rag_search
  
  
+def add_response(results, response_no, text):
+    if text and text.strip() and text != "Email type not found.":
+        results.append(
+            f"Response {response_no}\n"
+            f"------------------------------\n"
+            f"{text.strip()}"
+        )
+        return response_no + 1
+    return response_no
+ 
+ 
 def get_response(question):
  
     question = question.lower()
  
+    results = []
+    response_no = 1
+ 
     # FAQ
-    answer = faq_lookup(question)
-    if answer:
-        return answer
+    faq_answer = faq_lookup(question)
+    response_no = add_response(results, response_no, faq_answer)
  
     # Schedule
-    answer = schedule_lookup(question)
-    if answer:
-        return answer
+    schedule_answer = schedule_lookup(question)
+    response_no = add_response(results, response_no, schedule_answer)
  
     # Student Activity
-    answer = data_query(question)
-    if answer:
-        return answer
+    data_answer = data_query(question)
+    response_no = add_response(results, response_no, data_answer)
  
     # Email Generator
-    if "leave email" in question:
-        return generate_email("leave")
+    email_keywords = [
+        "leave",
+        "attendance",
+        "assignment",
+        "technical",
+        "bonafide",
+        "fee",
+        "library",
+        "exam",
+        "id card",
+        "password"
+    ]
  
-    elif "assignment email" in question:
-        return generate_email("assignment")
+    if any(word in question for word in email_keywords):
  
-    elif "technical email" in question:
-        return generate_email("technical")
+        if "id card" in question:
+            email_answer = generate_email("id card")
  
-    elif "attendance email" in question:
-        return generate_email("attendance")
+        elif "attendance" in question:
+            email_answer = generate_email("attendance")
  
-    elif "bonafide email" in question:
-        return generate_email("bonafide")
+        elif "assignment" in question:
+            email_answer = generate_email("assignment")
  
-    elif "fee email" in question:
-        return generate_email("fee")
+        elif "technical" in question:
+            email_answer = generate_email("technical")
  
-    elif "library email" in question:
-        return generate_email("library")
+        elif "bonafide" in question:
+            email_answer = generate_email("bonafide")
  
-    elif "exam email" in question:
-        return generate_email("exam")
+        elif "fee" in question:
+            email_answer = generate_email("fee")
  
-    elif "id card email" in question:
-        return generate_email("id card")
+        elif "library" in question:
+            email_answer = generate_email("library")
  
-    elif "password email" in question:
-        return generate_email("password")
+        elif "exam" in question:
+            email_answer = generate_email("exam")
  
-    # RAG Search
-    answer = rag_search(question)
-    if answer:
-        return answer
+        elif "password" in question:
+            email_answer = generate_email("password")
  
-    return "Sorry! I couldn't find an answer."
+        elif "leave" in question:
+            email_answer = generate_email("leave")
+ 
+        else:
+            email_answer = ""
+ 
+        response_no = add_response(results, response_no, email_answer)
+ 
+    # PDF Search
+    rag_answer = rag_search(question)
+ 
+    if rag_answer:
+ 
+        duplicate = False
+ 
+        for r in results:
+            if rag_answer[:100] in r:
+                duplicate = True
+                break
+ 
+        if not duplicate:
+            response_no = add_response(results, response_no, rag_answer)
+ 
+    if len(results) == 0:
+        return "Sorry, I couldn't find any relevant information."
+ 
+    return "\n\n".join(results)

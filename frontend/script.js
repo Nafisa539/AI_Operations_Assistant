@@ -1,36 +1,58 @@
-async function sendQuestion() {
+const sendBtn = document.getElementById("send-btn");
+const userInput = document.getElementById("user-input");
+const chatBox = document.getElementById("chat-box");
  
-    let question = document.getElementById("question").value;
+sendBtn.addEventListener("click", sendMessage);
  
-    if (question == "") {
+userInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+ 
+function addMessage(sender, message) {
+ 
+    const messageDiv = document.createElement("div");
+ 
+    if (sender === "You") {
+        messageDiv.className = "user-message";
+    } else {
+        messageDiv.className = "bot-message";
+    }
+ 
+    messageDiv.innerHTML = message.replace(/\n/g, "<br>");
+ 
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+ 
+function sendMessage() {
+ 
+    const message = userInput.value.trim();
+ 
+    if (message === "") {
         return;
     }
  
-    let chatBox = document.getElementById("chat-box");
+    addMessage("You", message);
  
-    chatBox.innerHTML +=
-        "<div class='user'><span>" + question + "</span></div>";
+    userInput.value = "";
  
-    document.getElementById("question").value = "";
- 
-    let response = await fetch("/chat", {
- 
+    fetch("/chat", {
         method: "POST",
- 
         headers: {
             "Content-Type": "application/json"
         },
- 
         body: JSON.stringify({
-            message: question
+            message: message
         })
- 
+    })
+    .then(response => response.json())
+    .then(data => {
+        addMessage("Bot", data.response);
+    })
+    .catch(error => {
+        addMessage("Bot", "Error connecting to the server.");
+        console.error(error);
     });
- 
-    let data = await response.json();
- 
-    chatBox.innerHTML +=
-        "<div class='bot'><span>" + data.response + "</span></div>";
- 
-    chatBox.scrollTop = chatBox.scrollHeight;
 }

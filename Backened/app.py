@@ -16,7 +16,6 @@ def home():
  
 @app.route("/chat", methods=["POST"])
 def chat():
- 
     data = request.get_json()
  
     question = data["message"]
@@ -26,4 +25,4 @@ def chat():
     return jsonify({"response": answer})
  
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

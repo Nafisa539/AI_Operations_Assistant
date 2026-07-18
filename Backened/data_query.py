@@ -1,25 +1,47 @@
 import pandas as pd
  
-# Read Student Activity CSV
-students = pd.read_csv("../data/student_activity.csv")
+# Load Student Activity CSV
+student = pd.read_csv("../data/student_activity.csv")
  
 def data_query(question):
  
     question = question.lower()
  
-    for i in range(len(students)):
+    words = question.split()
  
-        student_name = str(students["Student_Name"][i]).lower()
-        student_id = str(students["Student_ID"][i]).lower()
+    answers = []
  
-        if student_name in question or student_id in question:
+    for i in range(len(student)):
  
-            return (
-                "Student ID : " + str(students["Student_ID"][i]) +
-                "\nStudent Name : " + str(students["Student_Name"][i]) +
-                "\nAttendance : " + str(students["Attendance"][i]) +
-                "\nAssignment Status : " + str(students["Assignment_Status"][i]) +
-                "\nMarks : " + str(students["Marks"][i])
-            )
+        row = ""
  
-    return None
+        # Combine all column values into one string
+        for column in student.columns:
+            row += str(student[column][i]).lower() + " "
+ 
+        score = 0
+ 
+        # Check if any keyword matches
+        for word in words:
+            if word in row:
+                score += 1
+ 
+        if score > 0:
+ 
+            result = ""
+ 
+            # Display all column names and values
+            for column in student.columns:
+                result += f"{column} : {student[column][i]}\n"
+ 
+            result = result.strip()
+ 
+            # Remove duplicate records
+            if result not in answers:
+                answers.append(result)
+ 
+    if len(answers) == 0:
+        return None
+ 
+    # Leave one blank line between records
+    return "\n\n".join(answers)

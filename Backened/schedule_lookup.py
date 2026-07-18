@@ -1,25 +1,40 @@
 import pandas as pd
  
-# Read schedule.csv
+# Load Schedule CSV
 schedule = pd.read_csv("../data/schedule.csv")
  
 def schedule_lookup(question):
  
     question = question.lower()
  
+    words = question.split()
+ 
+    answers = []
+ 
     for i in range(len(schedule)):
  
-        event = str(schedule["Event"][i]).lower()
-        subject = str(schedule["Subject"][i]).lower()
+        row = ""
  
-        if event in question or subject in question:
+        for column in schedule.columns:
+            row += str(schedule[column][i]).lower() + " "
  
-            return (
-                "Event : " + str(schedule["Event"][i]) +
-                "\nSubject : " + str(schedule["Subject"][i]) +
-                "\nSemester : " + str(schedule["Semester"][i]) +
-                "\nDate : " + str(schedule["Date"][i]) +
-                "\nTime : " + str(schedule["Time"][i])
-            )
+        score = 0
  
-    return None
+        for word in words:
+            if word in row:
+                score += 1
+ 
+        if score > 0:
+ 
+            result = ""
+ 
+            for column in schedule.columns:
+                result += f"{column} : {schedule[column][i]}\n"
+ 
+            if result not in answers:
+                answers.append(result.strip())
+ 
+    if len(answers) == 0:
+        return None
+ 
+    return "\n\n".join(answers)

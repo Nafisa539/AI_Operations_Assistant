@@ -1,18 +1,38 @@
 import pandas as pd
  
-# Read FAQ CSV
 faq = pd.read_csv("../data/faq.csv")
  
 def faq_lookup(question):
  
     question = question.lower()
  
+    words = question.split()
+ 
+    answers = []
+ 
     for i in range(len(faq)):
  
         faq_question = str(faq["Question"][i]).lower()
+        faq_answer = str(faq["Answer"][i])
  
-        if question in faq_question or faq_question in question:
+        score = 0
  
-            return faq["Answer"][i]
+        for word in words:
  
-    return None
+            if word in faq_question:
+                score += 1
+ 
+        if score > 0:
+ 
+            result = (
+                f"Question : {faq['Question'][i]}\n"
+                f"Answer   : {faq_answer}"
+            )
+ 
+            if result not in answers:
+                answers.append(result)
+ 
+    if len(answers) == 0:
+        return None
+ 
+    return "\n\n".join(answers)
